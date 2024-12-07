@@ -37,9 +37,11 @@ public abstract class LocalPlayerMixin extends AbstractClientPlayer {
             method = "aiStep",
             at = @At(
                     value = "INVOKE",
-                    //? if >=1.21.2 {
-                    target = "Lnet/minecraft/client/player/ClientInput;tick(ZF)V"
-                    //?} else {
+                    //? if >=1.21.4 {
+                    target = "Lnet/minecraft/client/player/ClientInput;tick()V"
+                    //?} else if >=1.21.2 {
+                    /*target = "Lnet/minecraft/client/player/ClientInput;tick(ZF)V"
+                    *///?} else {
                     /*target = "Lnet/minecraft/client/player/Input;tick(ZF)V"
                     *///?}
             )

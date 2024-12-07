@@ -32,9 +32,18 @@ public class DualInput extends /*? if >=1.21.2 {*/ ClientInput /*?} else {*/ /*I
     }
 
     @Override
-    public void tick(boolean slowDown, float movementMultiplier) {
-        input1.tick(slowDown, movementMultiplier);
+    //? if >=1.21.4 {
+    public void tick() {
+    //?} else {
+    /*public void tick(boolean slowDown, float movementMultiplier) {
+    *///?}
+        //? if >=1.21.4 {
+        input1.tick();
+        input2.tick();
+        //?} else {
+        /*input1.tick(slowDown, movementMultiplier);
         input2.tick(slowDown, movementMultiplier);
+        *///?}
 
         this.leftImpulse = Mth.clamp(input1.leftImpulse + input2.leftImpulse, -1, 1);
         this.forwardImpulse = Mth.clamp(input1.forwardImpulse + input2.forwardImpulse, -1, 1);

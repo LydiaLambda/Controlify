@@ -26,7 +26,11 @@ public class ControllerPlayerMovement extends /*? if >=1.21.2 {*/ ClientInput /*
     }
 
     @Override
-    public void tick(boolean slowDown, float movementMultiplier) {
+    //? if >=1.21.4 {
+    public void tick() {
+    //?} else {
+    /*public void tick(boolean slowDown, float movementMultiplier) {
+    *///?}
         if (Minecraft.getInstance().screen != null || player == null) {
             this.leftImpulse = 0;
             this.forwardImpulse = 0;
@@ -68,10 +72,13 @@ public class ControllerPlayerMovement extends /*? if >=1.21.2 {*/ ClientInput /*
         left = this.leftImpulse > 0;
         right = this.leftImpulse < 0;
 
-        if (slowDown) {
+        //? if >=1.21.4 {
+        //?} else {
+        /*if (slowDown) {
             this.leftImpulse *= movementMultiplier;
             this.forwardImpulse *= movementMultiplier;
         }
+        *///?}
 
         // this over-complication is so exiting a GUI with the button still held doesn't trigger a jump.
         InputBinding jump = ControlifyBindings.JUMP.on(controller);
